@@ -14,6 +14,7 @@ struct ContentView: View {
     @FocusState private var amountIsFocused: Bool
     
     let tipPercentages = [0]
+
     
     var totalPerPerson: Double {
         let peopleCount = Double(numberOfPeople + 2)
@@ -25,6 +26,7 @@ struct ContentView: View {
         
         return amountPerPerson
     }
+
     
     var body: some View {
         NavigationStack {
@@ -59,6 +61,8 @@ struct ContentView: View {
                     let tipValue = checkAmount / 100 * tipSelection
                     let grandTotal = checkAmount + tipValue
                     Text(grandTotal, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                        .foregroundColor(tipPercentage == 0 ? .red : .primary)
+                    // project 3 Challenge 1
                 } // Challenge 2
                 
                 Section {
